@@ -25,7 +25,7 @@ def find_match_3(val1: str, val2: str, val3) -> str:
     return "".join(set(tmp).intersection(val3))
 
 def sum_ordinals(lst: list[str]) -> int:
-    #96 =  -> 97-1 -> start if acsii for lower case, but should start with 1 instead of 0 in out algorithm
+    # 96 -> 97-1 -> start if ascii for lower case, but should start with 1 instead of 0 in out algorithm
     # 38 -> 65-27 -> start of ascii for uppercase, but should be in a higher range in our algorithm
     ordList = [ord(element) -(96 if ord(element) >= 97 else 38) for element in lst]    
     return sum(ordList)
