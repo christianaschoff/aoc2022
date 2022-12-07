@@ -60,7 +60,7 @@ def aufgabe1(stacks:list[list[str]], moves: list[list[str]]) -> str:
     retStr = ""
     for elem in stacks:
         if len(elem) > 0:
-            retStr += elem[len(elem) -1]
+            retStr += elem[-1]
     return retStr
 
 
@@ -81,19 +81,30 @@ def aufgabe2(stacks:list[list[str]], moves: list[list[str]]) -> str:
     retStr = ""
     for elem in stacks:
         if len(elem) > 0:
-            retStr += elem[len(elem) -1]
+            retStr += elem[-1]
     return retStr
+
+def transform(lst: list[list[str]]) -> list[list[str]]:
+    transposed = list()
+    for i in range(len(lst[0])):
+        row = list()
+        for sublist in lst:
+            if(sublist[i].strip() != ''):
+                row.append(sublist[i].replace("[", "").replace("]", "").strip())
+        transposed.append(row)
+    return transposed
 
 # -- prog
 rawinput = readfile("day05/day05-input.txt")
 moves = generate_moves(rawinput)
 stacks = find_container_stacks(rawinput)
 
+transformed_stacks_new = transform(stacks)
 transformed_stacks = transform_containers_to_valid_arraylist(stacks)
 printF("Ergebnis Aufgabe 1:", aufgabe1(transformed_stacks, moves))
-#print("stacks: ", stacks)
-#print("array list: ", transformed_stacks)
-#print("moves: ", moves)
+printF("Ergebnis Aufgabe 1:", aufgabe1(transformed_stacks_new, moves))
 
+transformed_stacks_new = transform(stacks)
 transformed_stacks = transform_containers_to_valid_arraylist(stacks)
 printF("Ergebnis Aufgabe 2:", aufgabe2(transformed_stacks, moves))
+printF("Ergebnis Aufgabe 2:", aufgabe2(transformed_stacks_new, moves))
