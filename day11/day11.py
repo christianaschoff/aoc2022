@@ -86,7 +86,7 @@ def play_rounds(monkeys: list[Monkey], rounds: int, reduce_panic: bool) -> int:
     return res[0] * res[1]
 
 ## ---- prog ---
-rawinput = readfile("day11/day11-input-sample.txt")
+rawinput = readfile("day11/day11-input.txt")
 monkeys = create_monkeys(rawinput)
 result = play_rounds(monkeys, 20, True)
 print("Das Ergebnis von Aufgabe 1 ist: ", result)
